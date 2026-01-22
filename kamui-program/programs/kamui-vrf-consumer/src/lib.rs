@@ -4,7 +4,7 @@ use anchor_lang::{
 };
 
 
-declare_id!("2Pd6R21gGNJgrfxHQPegcXgwmSd5MY1uHBYrNAtYgPbE");
+declare_id!("DH3mVRXoyCUmmDmcf9a7AkEU99UEomvg2jq4X2boga6e");
 
 #[program]
 pub mod kamui_vrf_consumer {

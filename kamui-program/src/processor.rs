@@ -736,13 +736,20 @@ impl Processor {
         let rent = Rent::get()?;
         let result_lamports = rent.minimum_balance(result_size);
 
-        // Create result account
-            invoke_signed(
+        // Check if account is already initialized
+        let account_initialized = vrf_result_account.lamports() > 0 && 
+            vrf_result_account.data_len() >= 8 && 
+            &vrf_result_account.data.borrow()[0..8] == &[82, 69, 83, 85, 76, 84, 0, 0]; // "RESULT\0\0"
+
+        if !account_initialized {
+            // Create result account if it doesn't exist or isn't initialized
+            // If account already exists, this will fail gracefully and we'll handle it
+            let create_result = invoke_signed(
                 &system_instruction::create_account(
                     oracle.key,
                     vrf_result_account.key,
-                result_lamports,
-                result_size as u64,
+                    result_lamports,
+                    result_size as u64,
                     program_id,
                 ),
                 &[
@@ -750,12 +757,26 @@ impl Processor {
                     vrf_result_account.clone(),
                     system_program.clone(),
                 ],
-            &[&[
-                b"vrf_result",
-                &request_id,
-                &[result_bump],
-            ]],
-        )?;
+                &[&[
+                    b"vrf_result",
+                    &request_id,
+                    &[result_bump],
+                ]],
+            );
+
+            // If creation fails because account already exists, that's okay - we'll just use it
+            if let Err(err) = create_result {
+                // Check if it's because account already exists
+                if vrf_result_account.lamports() == 0 {
+                    // Account doesn't exist but creation failed for another reason
+                    return Err(err);
+                }
+                // Account exists, ensure it has enough space
+                if vrf_result_account.data_len() < result_size {
+                    vrf_result_account.realloc(result_size, false)?;
+                }
+            }
+        }
 
         // Write result data
         let mut result_data = vrf_result_account.try_borrow_mut_data()?;

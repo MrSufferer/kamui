@@ -1,0 +1,198 @@
+[2026-01-05T13:44:56.918Z] ℹ️  🚀 Initializing Standalone Kamui VRF Server
+[2026-01-05T13:44:56.919Z] ℹ️  ================================================================================
+[2026-01-05T13:44:56.919Z] ℹ️  Initializing Mangekyou CLI interface...
+[2026-01-05T13:44:56.919Z] ✅ CLI binary found in workspace target directory
+[2026-01-05T13:44:56.920Z] ℹ️  Loaded existing VRF keypair
+[2026-01-05T13:44:56.920Z] ℹ️  Testing CLI functionality...
+[2026-01-05T13:44:56.940Z] ✅ CLI functionality test passed
+[2026-01-05T13:44:56.940Z] ✅ Mangekyou CLI interface initialized successfully
+[2026-01-05T13:44:56.961Z] ℹ️  Oracle keypair loaded: 46SiBDPQWUK8noz5zoeU4ucNzct2BMKu59m7J44SzH3C
+[2026-01-05T13:44:59.936Z] ✅ Connected to Solana cluster
+[2026-01-05T13:44:59.936Z] ✅ VRF Server initialized successfully
+[2026-01-05T13:44:59.936Z] ℹ️  📊 Server Configuration:
+[2026-01-05T13:44:59.936Z] ℹ️     VRF Program ID: 6k1Lmt37b5QQAhPz5YXbTPoHCSCDbSEeNAC96nWZn85a
+[2026-01-05T13:44:59.936Z] ℹ️     Consumer Program ID: 2Pd6R21gGNJgrfxHQPegcXgwmSd5MY1uHBYrNAtYgPbE
+[2026-01-05T13:44:59.936Z] ℹ️     Verifier Program ID: 4qqRVYJAeBynm2yTydBkTJ9wVay3CrUfZ7gf9chtWS5Y
+[2026-01-05T13:44:59.936Z] ℹ️     RPC URL: https://api.devnet.solana.com
+[2026-01-05T13:44:59.936Z] ℹ️     Oracle Pubkey: 46SiBDPQWUK8noz5zoeU4ucNzct2BMKu59m7J44SzH3C
+[2026-01-05T13:44:59.936Z] ℹ️     VRF Public Key: fc1a737d32b04017feb698701d04e99784b4116cd7e88fe2471b4926bcace54f
+[2026-01-05T13:44:59.936Z] ℹ️     Polling Interval: 3000ms
+[2026-01-05T13:44:59.937Z] ℹ️  🎯 Starting VRF request monitoring...
+[2026-01-05T13:44:59.937Z] ℹ️  🔍 Monitoring for pending VRF requests...
+[2026-01-05T13:44:59.937Z] ℹ️  📡 Ready to fulfill randomness requests!
+[2026-01-05T13:44:59.937Z] ℹ️  ⚠️  Press Ctrl+C to stop the server
+
+[2026-01-05T13:45:19.974Z] ℹ️  🎯 Adding VRF request to processing queue: FHj2SRfcmF684ixn4ERVW6exeTCVc4kEAHrmdpGt4fXq
+[2026-01-05T13:45:19.975Z] ℹ️  🎲 Processing VRF request: FHj2SRfcmF684ixn4ERVW6exeTCVc4kEAHrmdpGt4fXq
+[2026-01-05T13:45:19.975Z] ℹ️  Parsed request data:
+[2026-01-05T13:45:19.975Z] ℹ️    Request ID: c3c63146ebb3b6615b72485d2cfdea284676caeaaaafd002ac6f9b1829b9bc50
+[2026-01-05T13:45:19.975Z] ℹ️    Subscriber: 46SiBDPQWUK8noz5zoeU4ucNzct2BMKu59m7J44SzH3C
+[2026-01-05T13:45:19.975Z] ℹ️    Pool ID: 0
+[2026-01-05T13:45:19.975Z] ℹ️    Request Index: 0
+[2026-01-05T13:45:19.975Z] ℹ️    Seed: 2b741b176a01a6638538b13135eb0a69a626bf0d45b16f86d9879ebfd4ff3611
+[2026-01-05T13:45:19.987Z] ✅ Generated and verified VRF proof for FHj2SRfcmF684ixn4ERVW6exeTCVc4kEAHrmdpGt4fXq
+[2026-01-05T13:45:19.988Z] ℹ️  🚀 Submitting VRF fulfillment for request: FHj2SRfcmF684ixn4ERVW6exeTCVc4kEAHrmdpGt4fXq
+[2026-01-05T13:45:19.988Z] ℹ️  🚀 Submitting VRF fulfillment for request: FHj2SRfcmF684ixn4ERVW6exeTCVc4kEAHrmdpGt4fXq
+[2026-01-05T13:45:19.988Z] ℹ️  Creating fulfillment instruction with integration test format
+[2026-01-05T13:45:19.988Z] ℹ️  Request account: FHj2SRfcmF684ixn4ERVW6exeTCVc4kEAHrmdpGt4fXq
+[2026-01-05T13:45:19.988Z] ℹ️  Subscription PDA: J3DYFwspJUp1JCZqXyaDVn8nG1VFC5ysSveQvuGsJypC
+[2026-01-05T13:45:19.988Z] ℹ️  Request Pool PDA: 6cWPmAmkoE7YbZ8UHxwdT3DcWH5Gvg9JLm7hmiAdDLgv
+[2026-01-05T13:45:19.988Z] ℹ️  VRF Result PDA: 3hCY4G8DjxXo1SWrnLGPhYGDzr9J2zVmvEumJXzmjEEw
+[2026-01-05T13:45:19.988Z] ℹ️  Request ID: c3c63146ebb3b6615b72485d2cfdea284676caeaaaafd002ac6f9b1829b9bc50
+[2026-01-05T13:45:23.146Z] ✅ 📡 Fulfillment submitted: 3rRWBrQ53cC1md2nWbXKmpjbBD6JQ7Lxc9wVSRGFJ7Zet2MxuRP3m1AyUZL3yySSSJ2asMV4bZYS8oX7CGWoE7Nh
+[2026-01-05T13:45:23.146Z] ℹ️  🔗 Explorer: https://explorer.solana.com/tx/3rRWBrQ53cC1md2nWbXKmpjbBD6JQ7Lxc9wVSRGFJ7Zet2MxuRP3m1AyUZL3yySSSJ2asMV4bZYS8oX7CGWoE7Nh?cluster=devnet
+[2026-01-05T13:45:24.147Z] ✅ ✅ Processed 1 VRF requests in 4825ms
+[2026-01-05T13:45:24.148Z] ℹ️  📊 Processing Stats: 1 processed, 1 fulfilled, 0 errors, uptime: 0m
+[2026-01-05T15:06:23.323Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T15:06:23.326Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T15:47:33.388Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T15:47:33.389Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T15:56:58.856Z] ❌ Error scanning for requests: terminated
+[2026-01-05T15:56:58.859Z] ❌ Error in monitoring loop: terminated
+[2026-01-05T16:02:24.204Z] ❌ Error scanning for requests: terminated
+[2026-01-05T16:02:24.207Z] ❌ Error in monitoring loop: terminated
+[2026-01-05T16:36:47.314Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T16:36:47.314Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T17:03:48.285Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T17:03:48.285Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T18:20:04.070Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T18:20:04.071Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T18:22:27.639Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T18:22:27.641Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T18:38:19.539Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T18:38:19.540Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T18:54:03.890Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T18:54:03.892Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T19:10:51.009Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T19:10:51.011Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T19:23:26.254Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T19:23:26.255Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T19:39:12.725Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T19:39:12.725Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T20:05:53.905Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T20:05:53.907Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T20:54:19.123Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T20:54:19.124Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T21:12:08.442Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T21:12:08.443Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T21:24:26.125Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T21:24:26.125Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T21:40:11.095Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T21:40:11.096Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T21:45:13.048Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T21:45:13.049Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T21:50:12.595Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T21:50:12.596Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T23:07:47.916Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T23:07:47.917Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T23:25:26.238Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T23:25:26.239Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T23:42:24.861Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T23:42:24.863Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-05T23:48:05.532Z] ❌ Error scanning for requests: fetch failed
+[2026-01-05T23:48:05.533Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T00:31:52.355Z] ❌ Error scanning for requests: terminated
+[2026-01-06T00:31:52.356Z] ❌ Error in monitoring loop: terminated
+[2026-01-06T00:50:49.982Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T00:50:49.983Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:03:51.781Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:03:51.781Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:03:56.785Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:03:56.786Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:01.792Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:01.792Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:06.799Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:06.799Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:11.803Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:11.803Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:16.814Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:16.815Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:21.821Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:21.822Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:26.826Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:26.826Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:31.830Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:31.830Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:36.836Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:36.836Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:41.842Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:41.843Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:46.850Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:46.850Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:51.854Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:51.855Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:04:56.859Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:04:56.859Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:01.863Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:01.864Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:06.870Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:06.870Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:11.875Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:11.877Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:16.883Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:16.884Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:21.889Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:21.889Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:26.895Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:26.895Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:31.899Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:31.899Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:36.904Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:36.904Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:41.908Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:41.909Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:46.915Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:46.916Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:51.921Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:51.922Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:05:56.928Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:05:56.929Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:01.934Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:01.934Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:06.936Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:06.937Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:11.943Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:11.943Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:16.947Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:16.947Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:21.952Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:21.952Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:26.958Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:26.958Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:31.963Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:31.963Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:36.969Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:36.969Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:41.974Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:41.974Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:46.980Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:46.980Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:51.986Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:51.986Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T01:06:56.989Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T01:06:56.989Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T02:23:27.812Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T02:23:27.815Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T02:30:05.974Z] ❌ Error scanning for requests: fetch failed
+[2026-01-06T02:30:05.975Z] ❌ Error in monitoring loop: fetch failed
+[2026-01-06T03:14:03.205Z] ℹ️  🎯 Adding VRF request to processing queue: EML2RnLQQXsGjFrqnWjqXabSRFrDrhXpnqfB3DVcfFxL
+[2026-01-06T03:14:03.208Z] ℹ️  🎲 Processing VRF request: EML2RnLQQXsGjFrqnWjqXabSRFrDrhXpnqfB3DVcfFxL
+[2026-01-06T03:14:03.208Z] ℹ️  Parsed request data:
+[2026-01-06T03:14:03.208Z] ℹ️    Request ID: a0b9323dffb5ef27189eb072deac1ace1bf2ae776579aceceab62e15617d8b9e
+[2026-01-06T03:14:03.208Z] ℹ️    Subscriber: 46SiBDPQWUK8noz5zoeU4ucNzct2BMKu59m7J44SzH3C
+[2026-01-06T03:14:03.208Z] ℹ️    Pool ID: 0
+[2026-01-06T03:14:03.208Z] ℹ️    Request Index: 0
+[2026-01-06T03:14:03.208Z] ℹ️    Seed: 4623452eaf264445f453942bf241b7d02d1ba35f12a2b072040365c3fb0692f4
+[2026-01-06T03:14:03.221Z] ✅ Generated and verified VRF proof for EML2RnLQQXsGjFrqnWjqXabSRFrDrhXpnqfB3DVcfFxL
+[2026-01-06T03:14:03.222Z] ℹ️  🚀 Submitting VRF fulfillment for request: EML2RnLQQXsGjFrqnWjqXabSRFrDrhXpnqfB3DVcfFxL
+[2026-01-06T03:14:03.222Z] ℹ️  🚀 Submitting VRF fulfillment for request: EML2RnLQQXsGjFrqnWjqXabSRFrDrhXpnqfB3DVcfFxL
+[2026-01-06T03:14:03.223Z] ℹ️  Creating fulfillment instruction with integration test format
+[2026-01-06T03:14:03.223Z] ℹ️  Request account: EML2RnLQQXsGjFrqnWjqXabSRFrDrhXpnqfB3DVcfFxL
+[2026-01-06T03:14:03.223Z] ℹ️  Subscription PDA: 866zEELg9UaC9NvfEcESLdKTzXpTXGiFydGvRLTcNtcR
+[2026-01-06T03:14:03.223Z] ℹ️  Request Pool PDA: 26Z9vQ9SEJLKExqffZ2dBjmaCR8aBFQNETEbaY6zYHUR
+[2026-01-06T03:14:03.223Z] ℹ️  VRF Result PDA: AZkDUgbAycBKLqnFA5wtse4iKuRTVbHicU65Tm5fWJvx
+[2026-01-06T03:14:03.223Z] ℹ️  Request ID: a0b9323dffb5ef27189eb072deac1ace1bf2ae776579aceceab62e15617d8b9e
+[2026-01-06T03:14:05.096Z] ✅ 📡 Fulfillment submitted: M5kJyT7xnZkJ7xWJEMctoc8F3pQe9VCb3M2HWxcxbMucFxDNXeCqkdCy12AB5h1KcyWbFjgT5DZcLujjxGZQJJR
+[2026-01-06T03:14:05.096Z] ℹ️  🔗 Explorer: https://explorer.solana.com/tx/M5kJyT7xnZkJ7xWJEMctoc8F3pQe9VCb3M2HWxcxbMucFxDNXeCqkdCy12AB5h1KcyWbFjgT5DZcLujjxGZQJJR?cluster=devnet
+[2026-01-06T03:14:06.098Z] ✅ ✅ Processed 1 VRF requests in 3338ms
+[2026-01-06T03:14:06.098Z] ℹ️  📊 Processing Stats: 2 processed, 2 fulfilled, 66 errors, uptime: 809m

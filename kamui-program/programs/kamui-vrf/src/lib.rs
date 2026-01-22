@@ -3,7 +3,7 @@ use anchor_lang::{
     solana_program::keccak,
 };
 
-declare_id!("6k1Lmt37b5QQAhPz5YXbTPoHCSCDbSEeNAC96nWZn85a"); // Devnet deployed ID
+declare_id!("8xBh8yMwNJG42fcmj1MvZRrSV3w8NwH3J9c3xPjF5Vgd"); // Devnet deployed ID
 
 pub mod state;
 pub mod errors;

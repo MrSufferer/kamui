@@ -77,33 +77,33 @@ class RealVRFServer {
 
     async initialize(): Promise<void> {
         console.log("🔧 Initializing VRF Server with real CLI...");
-        
+
         try {
             // Generate VRF keypair using CLI
             const { exec } = await import('child_process');
             const { promisify } = await import('util');
             const execAsync = promisify(exec);
-            
+
             console.log("🔑 Generating VRF keypair using Mangekyou CLI...");
             const { stdout } = await execAsync(`${this.cliPath} keygen`);
-            
+
             // Parse CLI output
             const lines = stdout.trim().split('\n');
             const secretKeyLine = lines.find(line => line.includes('Secret key:'));
             const publicKeyLine = lines.find(line => line.includes('Public key:'));
-            
+
             if (!secretKeyLine || !publicKeyLine) {
                 throw new Error("Failed to parse CLI keygen output");
             }
-            
+
             const secretKey = secretKeyLine.split('Secret key: ')[1].trim();
             const publicKey = publicKeyLine.split('Public key: ')[1].trim();
-            
+
             this.vrfKeypair = { secretKey, publicKey };
-            
+
             console.log("✅ VRF keypair generated successfully");
             console.log(`🔑 VRF Public Key: ${publicKey}`);
-            
+
         } catch (error: any) {
             console.error("❌ Failed to initialize VRF server:", error.message);
             throw error;
@@ -133,61 +133,61 @@ class RealVRFServer {
         }
 
         console.log("🎲 Generating REAL VRF proof using Mangekyou CLI...");
-        
+
         try {
             const { exec } = await import('child_process');
             const { promisify } = await import('util');
             const execAsync = promisify(exec);
-            
+
             // Convert alpha string to hex
             const alphaHex = alphaString.toString('hex');
             console.log(`📝 Alpha input (hex): ${alphaHex}`);
-            
+
             // Call the CLI to generate proof
             console.log(`🚀 Executing: ${this.cliPath} prove --input ${alphaHex} --secret-key ${this.vrfKeypair.secretKey}`);
             const { stdout, stderr } = await execAsync(`${this.cliPath} prove --input ${alphaHex} --secret-key ${this.vrfKeypair.secretKey}`);
-            
+
             if (stderr && !stderr.includes('warning')) {
                 console.log("⚠️ CLI stderr:", stderr);
             }
-            
+
             console.log("✅ CLI stdout:", stdout);
-            
+
             // Parse the CLI output
             const lines = stdout.trim().split('\n');
             const proofLine = lines.find(line => line.includes('Proof:'));
             const outputLine = lines.find(line => line.includes('Output:'));
-            
+
             if (!proofLine || !outputLine) {
                 throw new Error(`Failed to parse CLI output: ${stdout}`);
             }
-            
+
             const proof = proofLine.split('Proof:')[1].trim();
             const output = outputLine.split('Output:')[1].trim();
-            
+
             console.log(`🔑 Generated proof: ${proof.substring(0, 32)}...`);
             console.log(`🔑 Generated output: ${output.substring(0, 32)}...`);
-            
+
             // Convert hex strings to buffers
             const proofBuffer = Buffer.from(proof, 'hex');
             const outputBuffer = Buffer.from(output, 'hex');
             const publicKeyBuffer = Buffer.from(this.vrfKeypair.publicKey, 'hex');
-            
+
             // Extract proof components (gamma || challenge || scalar)
             if (proofBuffer.length < 80) {
                 throw new Error(`Invalid proof length: ${proofBuffer.length}, expected at least 80 bytes`);
             }
-            
+
             const gamma = proofBuffer.slice(0, 32);
             const challenge = proofBuffer.slice(32, 48);
             const scalar = proofBuffer.slice(48, 80);
-            
+
             console.log("✅ Real Mangekyou CLI proof generation successful!");
             console.log(`🔑 Proof components:`);
             console.log(`  - Gamma: ${gamma.toString('hex').substring(0, 32)}...`);
             console.log(`  - Challenge: ${challenge.toString('hex').substring(0, 16)}...`);
             console.log(`  - Scalar: ${scalar.toString('hex').substring(0, 32)}...`);
-            
+
             return {
                 output: outputBuffer,
                 proof: proofBuffer,
@@ -196,7 +196,7 @@ class RealVRFServer {
                 challenge,
                 scalar
             };
-            
+
         } catch (error: any) {
             console.log("❌ Mangekyou CLI proof generation failed:", error.message);
             throw error;
@@ -211,20 +211,20 @@ class RealVRFServer {
             const { exec } = await import('child_process');
             const { promisify } = await import('util');
             const execAsync = promisify(exec);
-            
+
             const proofHex = proof.toString('hex');
             const outputHex = output.toString('hex');
             const publicKeyHex = publicKey.toString('hex');
             const inputHex = input.toString('hex');
-            
+
             console.log("🔍 Verifying VRF proof using Mangekyou CLI...");
-            
+
             const command = `${this.cliPath} verify --proof ${proofHex} --output ${outputHex} --public-key ${publicKeyHex} --input ${inputHex}`;
             await execAsync(command);
-            
+
             console.log("✅ VRF proof verification successful!");
             return true;
-            
+
         } catch (error) {
             console.log("❌ VRF proof verification failed:", (error as any).message);
             return false;
@@ -279,12 +279,12 @@ class VRFEventMonitor {
                     console.log(`  Owner: ${accountInfo.accountInfo.owner.toString()}`);
                     console.log(`  Data Length: ${accountInfo.accountInfo.data.length} bytes`);
                     console.log(`  Lamports: ${accountInfo.accountInfo.lamports}`);
-                    
+
                     // Try to identify the account type
                     if (accountInfo.accountInfo.data.length > 8) {
                         const discriminator = accountInfo.accountInfo.data.slice(0, 8).toString('hex');
                         console.log(`  Discriminator: ${discriminator}`);
-                        
+
                         // Check if it's a randomness request
                         const requestDiscriminator = "TBD"; // TODO: Add actual discriminator
                         if (discriminator === requestDiscriminator) {
@@ -306,25 +306,25 @@ class VRFEventMonitor {
 
     private async handleRandomnessRequest(accountId: PublicKey, data: Buffer): Promise<void> {
         console.log(`🎯 Handling randomness request: ${accountId.toString()}`);
-        
+
         try {
             // Check if we have an initialized VRF server
             if (!this.vrfServer) {
                 console.log("⚠️ No VRF server initialized, cannot handle request");
                 return;
             }
-            
+
             // Parse request data to extract seed and requirements
             // TODO: Implement proper request parsing
-            
+
             // Generate proof using the initialized VRF server
             const seed = data.slice(40, 72); // Extract seed from request (approximate offset)
             const vrfResult = await this.vrfServer.generateVRFProof(seed);
-            
+
             console.log("✅ Generated VRF proof for request:", vrfResult.proof.toString('hex'));
-            
+
             // TODO: Submit fulfillment transaction back to the program
-            
+
         } catch (error) {
             console.error("❌ Failed to handle randomness request:", error);
         }
@@ -368,7 +368,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
     const cleanSeed = Keypair.fromSeed(
         crypto.createHash('sha256').update(uniqueSeedString).digest().slice(0, 32)
     );
-    
+
     console.log(`🌱 Using test seed: ${cleanSeed.publicKey.toString()}`);
 
     // PDAs and state
@@ -430,7 +430,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
             await new Promise(resolve => setTimeout(resolve, 2000));
 
             console.log("📋 Event monitoring is active and listening for VRF requests");
-            
+
         } catch (error: any) {
             console.log("❌ Error starting event monitoring:", error.message);
             throw error;
@@ -443,12 +443,12 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
         try {
             // Check if subscription already exists
             const subscriptionAccount = await connection.getAccountInfo(subscriptionPDA);
-            
+
             if (subscriptionAccount) {
                 console.log("✅ Subscription account already exists");
                 console.log(`Account owner: ${subscriptionAccount.owner.toString()}`);
                 console.log(`Account data length: ${subscriptionAccount.data.length}`);
-                
+
                 // If it's owned by our VRF program, check if it's properly formatted
                 if (subscriptionAccount.owner.equals(KAMUI_VRF_PROGRAM_ID)) {
                     try {
@@ -470,14 +470,14 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
                     console.log(`Expected owner: ${KAMUI_VRF_PROGRAM_ID.toString()}`);
                     console.log(`Actual owner: ${subscriptionAccount.owner.toString()}`);
                 }
-                
+
                 // If we reach here, the account exists but is invalid - we need to use a different seed
                 throw new Error("Subscription PDA already exists with invalid data. Try using a different seed.");
             }
 
             console.log("🔧 Creating new subscription...");
             const minBalance = BigInt(10_000_000); // 0.01 SOL
-            
+
             // Debug: Check the owner account details
             console.log("🔍 Debugging owner account:");
             console.log(`  Owner pubkey: ${owner.publicKey.toString()}`);
@@ -587,7 +587,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
         try {
             const testMessage = "Hello, VRF World!";
             const alphaBytes = Buffer.from(testMessage, 'utf8');
-            
+
             console.log(`🧪 Testing with message: "${testMessage}"`);
             console.log(`📝 Alpha bytes: ${alphaBytes.toString('hex')}`);
 
@@ -598,14 +598,14 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
             // Test Mangekyou CLI proof generation
             console.log("🔧 Testing Mangekyou CLI integration...");
             const cliResult = await vrfServer.generateMangekyouProof(alphaBytes);
-            
+
             console.log("✅ Mangekyou CLI proof generation successful");
             console.log(`🔑 CLI Proof: ${cliResult.proof.toString('hex')}`);
             console.log(`🔑 CLI Public Key: ${cliResult.public_key.toString('hex')}`);
 
         } catch (error: any) {
             console.log("❌ Mangekyou CLI proof generation failed:", error.message);
-            
+
             // Document the issue
             console.log("📝 DOCUMENTATION: Mangekyou CLI Integration Status");
             console.log("📝 Issue: CLI integration not yet implemented");
@@ -616,7 +616,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
             console.log("📝   2. Implement exec/spawn call to CLI with proper parameters");
             console.log("📝   3. Parse CLI output to extract proof and public key");
             console.log("📝   4. Handle CLI errors and edge cases");
-            
+
             throw error;
         }
     });
@@ -633,7 +633,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
             console.log(`🔑 Request account: ${requestKeypair.publicKey.toString()}`);
 
             // Create request instruction
-            const callbackData = Buffer.alloc(0);
+            const callbackData = Buffer.alloc(0); // Empty callback data
             const numWords = 1;
             const minimumConfirmations = 1;
             const callbackGasLimit = 100000;
@@ -704,12 +704,6 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
             console.log("🔧 Simulating VRF server fulfillment...");
             const vrfResult = await vrfServer.generateMangekyouProof(seed);
 
-            // Create fulfillment transaction
-            const [vrfResultPDA] = await PublicKey.findProgramAddress(
-                [Buffer.from("vrf_result"), requestKeypair.publicKey.toBuffer()],
-                KAMUI_VRF_PROGRAM_ID
-            );
-
             // Read request data to get actual request ID and index
             const requestAccountInfo = await connection.getAccountInfo(requestKeypair.publicKey);
             if (!requestAccountInfo) {
@@ -717,25 +711,41 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
             }
 
             // Extract request details from account data (simplified)
-            let dataOffset = 8 + 32 + 32 + 32; // Skip discriminator, subscription, seed, requester
-            
+            let dataOffset = 8; // Skip discriminator
+            dataOffset += 32; // Skip subscription
+            dataOffset += 32; // Skip seed
+
+            // Extract requester (this is the program that will receive the callback)
+            const requesterPubkey = new PublicKey(requestAccountInfo.data.slice(dataOffset, dataOffset + 32));
+            dataOffset += 32;
+
             // Skip callback data
             const callbackLength = requestAccountInfo.data.readUInt32LE(dataOffset);
             dataOffset += 4 + callbackLength;
-            
+
             dataOffset += 8 + 1 + 4 + 8; // Skip request_slot, status, num_words, gas_limit
-            
+
             const requestPoolId = requestAccountInfo.data.readUInt8(dataOffset);
             dataOffset += 1;
-            
+
             const requestIndex = requestAccountInfo.data.readUInt32LE(dataOffset);
             dataOffset += 4;
-            
+
             const requestId = requestAccountInfo.data.slice(dataOffset, dataOffset + 32);
+
+            // Create fulfillment transaction - derive PDA using request_id (matching updated Rust code)
+            const [vrfResultPDA] = await PublicKey.findProgramAddress(
+                [Buffer.from("vrf_result"), requestId],
+                KAMUI_VRF_PROGRAM_ID
+            );
 
             console.log(`🔑 Request ID: ${requestId.toString('hex')}`);
             console.log(`📊 Pool ID: ${requestPoolId}`);
             console.log(`📊 Request Index: ${requestIndex}`);
+            console.log(`📊 Requester: ${requesterPubkey.toString()}`);
+
+            // Use SystemProgram as callback_program since requester is a wallet (not a program)
+            const callbackProgram = SystemProgram.programId;
 
             // Create fulfillment instruction
             const fulfillTotalSize = 8 + 4 + vrfResult.proof.length + 4 + vrfResult.public_key.length + 32 + 1 + 4;
@@ -776,6 +786,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
                     { pubkey: vrfResultPDA, isSigner: false, isWritable: true },
                     { pubkey: requestPoolPDA, isSigner: false, isWritable: true },
                     { pubkey: subscriptionPDA, isSigner: false, isWritable: true },
+                    { pubkey: callbackProgram, isSigner: false, isWritable: false }, // callback_program (SystemProgram when no callback)
                     { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
                 ],
                 programId: KAMUI_VRF_PROGRAM_ID,
@@ -798,7 +809,7 @@ describe("Kamui VRF Integration Test - Event Handling & Mangekyou CLI", () => {
         console.log("📋 Test 5: Documenting VRF server capabilities");
 
         console.log("\n📊 KAMUI VRF INTEGRATION TEST RESULTS");
-        console.log("=" .repeat(60));
+        console.log("=".repeat(60));
 
         console.log("\n🔧 VRF SERVER CAPABILITIES:");
         console.log("✅ Cryptographic VRF proof generation");
